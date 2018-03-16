@@ -18,15 +18,15 @@ class LoginView: UIView {
     //MARK: - variables
     weak var delegate:LoginViewDelegate?
     let loginButton:UIButton
-    let userNameTextField:UITextField
-    let passwordTextField:UITextField
+    let userNameTextField:TextFieldWithHintText
+    let passwordTextField:TextFieldWithHintText
     
     //MARK: - initialozations
     init() {
         
         loginButton = UIButton()
-        userNameTextField = UITextField()
-        passwordTextField = UITextField()
+        userNameTextField = TextFieldWithHintText()
+        passwordTextField = TextFieldWithHintText()
         super.init(frame: CGRect.zero)
         
         initViews()
@@ -35,8 +35,15 @@ class LoginView: UIView {
     
     func initViews() {
         loginButton.setTitle(NSLocalizedString("LoginButtonTitle", comment: ""), for: .normal)
-        userNameTextField.text = "userName"
-        passwordTextField.text = "password"
+        loginButton.backgroundColor = UIColor.blue
+        loginButton.layer.cornerRadius = 5
+        loginButton.isUserInteractionEnabled = true
+        loginButton.addTarget(self, action: #selector(didPressLoginButton(_sender:)), for: .touchUpInside)
+        loginButton.setTitleColor(UIColor.gray, for: .highlighted)
+        userNameTextField.setHintText("userName")
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.setHintText("password")
+        
         
         addSubview(loginButton)
         addSubview(userNameTextField)
@@ -57,14 +64,17 @@ class LoginView: UIView {
             passTextField.right == superView.right
             
             button.top == passTextField.bottom + 20
-            button.left == superView.left
-            button.right == superView.right
+            button.centerX == superView.centerX
             button.bottom == superView.bottom
-            
         }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - login Button
+    @objc func didPressLoginButton(_sender: UIButton!) {
+        
     }
     
 }

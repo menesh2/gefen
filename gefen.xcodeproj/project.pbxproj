@@ -13,6 +13,8 @@
 		7C1D31F8205B14B2009C3201 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C1D31F7205B14B2009C3201 /* Assets.xcassets */; };
 		7CA15CE6205BCD140041E8AE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA15CE5205BCD140041E8AE /* LoginView.swift */; };
 		7CA15CE8205BD16C0041E8AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CA15CE7205BD16C0041E8AE /* Localizable.strings */; };
+		7CA15CEB205C1CF10041E8AE /* TextFieldWithHintText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA15CEA205C1CF10041E8AE /* TextFieldWithHintText.swift */; };
+		7CA15CEE205C21760041E8AE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA15CED205C21760041E8AE /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7C1D31FC205B14B2009C3201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA15CE5205BCD140041E8AE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7CA15CE7205BD16C0041E8AE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		7CA15CEA205C1CF10041E8AE /* TextFieldWithHintText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithHintText.swift; sourceTree = "<group>"; };
+		7CA15CED205C21760041E8AE /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CE5704CE47390BF5BC4A2D49 /* Pods-gefen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gefen.release.xcconfig"; path = "Pods/Target Support Files/Pods-gefen/Pods-gefen.release.xcconfig"; sourceTree = "<group>"; };
 		CF6457DC6CDBB012F381C0DA /* Pods_gefen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gefen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +82,8 @@
 		7C1D31EF205B14B2009C3201 /* gefen */ = {
 			isa = PBXGroup;
 			children = (
+				7CA15CEC205C21210041E8AE /* extentions */,
+				7CA15CE9205C1BE50041E8AE /* utils */,
 				7CA15CE4205BCCCE0041E8AE /* Views */,
 				7C1D31F0205B14B2009C3201 /* AppDelegate.swift */,
 				7C1D31F2205B14B2009C3201 /* MainViewController.swift */,
@@ -94,6 +100,22 @@
 				7CA15CE5205BCD140041E8AE /* LoginView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7CA15CE9205C1BE50041E8AE /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				7CA15CEA205C1CF10041E8AE /* TextFieldWithHintText.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		7CA15CEC205C21210041E8AE /* extentions */ = {
+			isa = PBXGroup;
+			children = (
+				7CA15CED205C21760041E8AE /* UIColorExtension.swift */,
+			);
+			path = extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +249,8 @@
 				7CA15CE6205BCD140041E8AE /* LoginView.swift in Sources */,
 				7C1D31F3205B14B2009C3201 /* MainViewController.swift in Sources */,
 				7C1D31F1205B14B2009C3201 /* AppDelegate.swift in Sources */,
+				7CA15CEE205C21760041E8AE /* UIColorExtension.swift in Sources */,
+				7CA15CEB205C1CF10041E8AE /* TextFieldWithHintText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

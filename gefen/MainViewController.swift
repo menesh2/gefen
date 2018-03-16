@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
         view.addSubview(loginView)
         setupConstraints()
         view.translatesAutoresizingMaskIntoConstraints = true
+        view.backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +30,8 @@ class MainViewController: UIViewController {
     func setupConstraints() {
         constrain(loginView) {loginView in
             guard let superView = loginView.superview else {return}
-            loginView.centerX == superView.centerX
+            loginView.left == superView.left + 40
+            loginView.right == superView.right - 40
             loginView.centerY == superView.centerY
             
         }
