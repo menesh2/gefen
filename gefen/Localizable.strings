@@ -7,4 +7,5 @@
 */
 
 "LoginButtonTitle" = "Login";
-
+"userName" = "User Name";
+"password" = "Password";

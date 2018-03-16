@@ -40,10 +40,9 @@ class LoginView: UIView {
         loginButton.isUserInteractionEnabled = true
         loginButton.addTarget(self, action: #selector(didPressLoginButton(_sender:)), for: .touchUpInside)
         loginButton.setTitleColor(UIColor.gray, for: .highlighted)
-        userNameTextField.setHintText("userName")
+        userNameTextField.setHintText(NSLocalizedString("userName", comment: ""))
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.setHintText("password")
-        
+        passwordTextField.setHintText(NSLocalizedString("password", comment: ""))
         
         addSubview(loginButton)
         addSubview(userNameTextField)
