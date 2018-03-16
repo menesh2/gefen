@@ -7,5 +7,6 @@ target 'gefen' do
 
   # Pods for gefen
 pod 'Cartography', '~> 3.0'
+pod 'Alamofire', '~> 4.7'
 
 end
