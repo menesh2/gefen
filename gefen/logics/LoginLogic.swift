@@ -28,7 +28,8 @@ class LoginLogic {
             delegate?.loginLogicShowPopup(withTitle: titleText, andWithInfoText: infoText, andWithApproveButtonText:buttonText )
         }
         else if userName.capitalized == validUserName.capitalized && password == validPassword {
-            //push view controller
+            let photosVC = PhotosViewController()
+            self.delegate?.loginLogicPushViewController(viewController: photosVC)
         }
         else{
             titleText = NSLocalizedString("invalidUsernameOrPass", comment: "")

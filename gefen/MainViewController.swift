@@ -58,7 +58,7 @@ extension MainViewController: LoginLogicDelegate {
     }
     
     func loginLogicPushViewController(viewController: UIViewController) {
-        
+        present(viewController, animated: true, completion: nil)
     }
     
     
