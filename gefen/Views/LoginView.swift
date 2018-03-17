@@ -10,7 +10,7 @@ import UIKit
 import Cartography
 
 protocol LoginViewDelegate: class {
-    func loginViewUserPressedLoginButton()
+    func loginViewUserPressedLoginButton(withUserName UserName:String, andWithPassword password:String)
 }
 
 class LoginView: UIView {
@@ -73,7 +73,7 @@ class LoginView: UIView {
     
     //MARK: - login Button
     @objc func didPressLoginButton(_sender: UIButton!) {
-        
+        delegate?.loginViewUserPressedLoginButton(withUserName: userNameTextField.getText(), andWithPassword: passwordTextField.getText())
     }
     
 }

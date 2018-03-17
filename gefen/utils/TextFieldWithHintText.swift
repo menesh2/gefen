@@ -34,7 +34,7 @@ class TextFieldWithHintText: UITextField, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getTextForSearch() ->String? {
+    func getText() ->String! {
         var textToReturn = text
         if text == hintText,
             textColor == UIColor.lightGray {
@@ -84,4 +84,8 @@ class TextFieldWithHintText: UITextField, UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        return true
+    }
 }

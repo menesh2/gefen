@@ -6,6 +6,13 @@
   Copyright © 2018 Or. All rights reserved.
 */
 
+//login view
 "LoginButtonTitle" = "Login";
+
+//login logic
 "userName" = "User Name";
 "password" = "Password";
+"mustFillAllFieldsTitle" = "Missing User Name or Password";
+"mustFillAllFieldsInfo" = "You must insert both User Name and Password";
+"ok" = "OK";
+"invalidUsernameOrPass" = "Invalid User Name Or Password";
