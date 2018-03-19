@@ -11,7 +11,7 @@ import Cartography
 
 protocol PhotosViewDataSource: class {
     func PhotosViewGetNumberOfRows() -> NSInteger
-    func PhotosViewGetCellForIndexPath(indexPath:IndexPath) ->UICollectionViewCell
+    func PhotosViewGetImageDataForIndexPath(indexPath:IndexPath) ->ImageData
 }
 
 class PhotosView: UIView {
@@ -44,12 +44,16 @@ class PhotosView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupConstraints() {
         constrain(collectionView){collectionView in
             guard let superView = collectionView.superview else {return}
             collectionView.edges == superView.edges
         }
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
     }
     
 }
@@ -66,7 +70,8 @@ extension PhotosView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CustomCollectionViewCell
+        cell.setImageData(imageData: dataSource?.PhotosViewGetImageDataForIndexPath(indexPath: indexPath))
         return cell
     }
     

@@ -8,13 +8,30 @@
 
 import UIKit
 
+protocol PhotosLogicDelegate: class {
+    func photosLogicImagesDataArrived()
+}
+
 class PhotosLogic {
 
-    func getNumberOfItems() ->NSInteger {
-        return 10
+    var imagesData:[ImageData]?
+    weak var delegate: PhotosLogicDelegate?
+    
+    init() {
+        FlickerManager.sendPhotosRequest(completionHandler: imagesRequestReturnedWithData)
     }
     
-    func getCellForIndexPath(_ indexPath: IndexPath) ->UICollectionViewCell {
-        return UICollectionViewCell()
+    func getNumberOfItems() ->NSInteger {
+        return imagesData?.count ?? 0
+    }
+    
+    func getImageDataForIndexPath(_ indexPath: IndexPath) ->ImageData {
+        return imagesData?[indexPath.row] ?? ImageData()
+    }
+    
+    func imagesRequestReturnedWithData(imagesData: [ImageData]) {
+        self.imagesData = imagesData
+        self.delegate?.photosLogicImagesDataArrived()
     }
 }
+

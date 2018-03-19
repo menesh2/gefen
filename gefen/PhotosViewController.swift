@@ -19,6 +19,7 @@ class PhotosViewController: UIViewController {
         photosLogic = PhotosLogic()
         super.init(nibName: nil, bundle: nil)
         photosView.dataSource = self
+        photosLogic.delegate = self
         view.addSubview(photosView)
         setupConstraints()
         view.translatesAutoresizingMaskIntoConstraints = true
@@ -44,13 +45,21 @@ class PhotosViewController: UIViewController {
 
 }
 
+extension PhotosViewController: PhotosLogicDelegate {
+    func photosLogicImagesDataArrived() {
+        DispatchQueue.main.async {
+            self.photosView.reloadData()
+        }
+    }
+}
+
 extension PhotosViewController: PhotosViewDataSource {
     func PhotosViewGetNumberOfRows() -> NSInteger {
         return photosLogic.getNumberOfItems()
     }
     
-    func PhotosViewGetCellForIndexPath(indexPath: IndexPath) -> UICollectionViewCell {
-        return photosLogic.getCellForIndexPath(indexPath)
+    func PhotosViewGetImageDataForIndexPath(indexPath: IndexPath) -> ImageData {
+        return photosLogic.getImageDataForIndexPath(indexPath)
     }
     
     

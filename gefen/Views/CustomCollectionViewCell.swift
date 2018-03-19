@@ -12,17 +12,13 @@ import Cartography
 class CustomCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView
+    var imageData: ImageData?
    
     required init?(coder aDecoder: NSCoder) {
         imageView = UIImageView()
         super.init(coder: aDecoder)
         addSubview(imageView)
         setupConstraints()
-        initViews()
-    }
-    
-    func initViews() {
-        
     }
     
     override init(frame: CGRect) {
@@ -30,12 +26,29 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(imageView)
         setupConstraints()
-        initViews()
+    }
+    
+    func setImageData(imageData:ImageData?) {
+        self.imageData = imageData
+        getImageFromServer()
+    }
+    
+    func getImageFromServer() {
+        guard let imageData = imageData else {return}
+        FlickerManager.getPhoto(imageData: imageData, completionCallback: imageArrived)
     }
     
     func setupConstraints() {
         constrain(imageView, self) {view, superView in
             view.edges == superView.edges
+        }
+    }
+    
+    func imageArrived(imageData:ImageData) {
+        if imageData.imageId == self.imageData?.imageId {
+            DispatchQueue.main.async {
+                self.imageView.image = imageData.image
+            }
         }
     }
 }
