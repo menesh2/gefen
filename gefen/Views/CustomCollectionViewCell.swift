@@ -12,20 +12,32 @@ import Cartography
 class CustomCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView
+    let loadingIndicator: UIActivityIndicatorView
     var imageData: ImageData?
+    
    
     required init?(coder aDecoder: NSCoder) {
         imageView = UIImageView()
+        loadingIndicator = UIActivityIndicatorView()
         super.init(coder: aDecoder)
         addSubview(imageView)
+        addSubview(loadingIndicator)
         setupConstraints()
     }
     
     override init(frame: CGRect) {
         imageView = UIImageView()
+        loadingIndicator = UIActivityIndicatorView()
         super.init(frame: frame)
         addSubview(imageView)
+        addSubview(loadingIndicator)
         setupConstraints()
+    }
+    
+    func initViews() {
+        imageView.isHidden = true
+        loadingIndicator.isHidden = false
+        loadingIndicator.startAnimating()
     }
     
     func setImageData(imageData:ImageData?) {
@@ -45,8 +57,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     func setupConstraints() {
-        constrain(imageView, self) {view, superView in
+        constrain(imageView, loadingIndicator, self) {view, loadingIndicator, superView in
             view.edges == superView.edges
+            loadingIndicator.edges == superView.edges
         }
     }
     
@@ -54,6 +67,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         DispatchQueue.main.async {
             self.imageView.image = imageData.image
+            self.imageView.isHidden = false
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
         }
         
     }
