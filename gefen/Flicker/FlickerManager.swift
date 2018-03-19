@@ -60,9 +60,6 @@ class FlickerManager{
             imageData.image = UIImage(data: data)
             completionCallback(imageData)
         })
-        
-            
-        
     }
 }
 

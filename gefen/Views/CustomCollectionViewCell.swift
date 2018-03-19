@@ -32,17 +32,26 @@ class CustomCollectionViewCell: UICollectionViewCell {
         addSubview(imageView)
         addSubview(loadingIndicator)
         setupConstraints()
+        showLoadingAnimation()
     }
     
-    func initViews() {
+    func showLoadingAnimation() {
         imageView.isHidden = true
         loadingIndicator.isHidden = false
+        loadingIndicator.activityIndicatorViewStyle = .gray
         loadingIndicator.startAnimating()
+    }
+    
+    func hideLoadingAnimation() {
+        self.imageView.isHidden = false
+        self.loadingIndicator.stopAnimating()
+        self.loadingIndicator.isHidden = true
     }
     
     func setImageData(imageData:ImageData?) {
         self.imageData = imageData
         if(imageData?.image == nil) {
+            showLoadingAnimation()
              getImageFromServer()
         }
         else {
@@ -67,9 +76,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         DispatchQueue.main.async {
             self.imageView.image = imageData.image
-            self.imageView.isHidden = false
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.isHidden = true
+            self.hideLoadingAnimation()
         }
         
     }
