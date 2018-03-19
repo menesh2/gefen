@@ -10,6 +10,7 @@ import UIKit
 
 protocol PhotosLogicDelegate: class {
     func photosLogicImagesDataArrived()
+    func photosLogicOpenImageWithTransition(imageData:ImageData, fromCell selectedCell:CustomCollectionViewCell)
 }
 
 class PhotosLogic {
@@ -32,6 +33,11 @@ class PhotosLogic {
     func imagesRequestReturnedWithData(imagesData: [ImageData]) {
         self.imagesData = imagesData
         self.delegate?.photosLogicImagesDataArrived()
+    }
+    
+    func userSelectedImageAtIndexPath(_ indexPath:IndexPath, fromCell selectedCell:CustomCollectionViewCell) {
+        guard let imagesData = imagesData else{return}
+        self.delegate?.photosLogicOpenImageWithTransition(imageData: imagesData[indexPath.row], fromCell: selectedCell)
     }
 }
 

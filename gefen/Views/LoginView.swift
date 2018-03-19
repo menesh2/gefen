@@ -38,7 +38,7 @@ class LoginView: UIView {
         loginButton.backgroundColor = UIColor.blue
         loginButton.layer.cornerRadius = 5
         loginButton.isUserInteractionEnabled = true
-        loginButton.addTarget(self, action: #selector(didPressLoginButton(_sender:)), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(didPressLoginButton(_:)), for: .touchUpInside)
         loginButton.setTitleColor(UIColor.gray, for: .highlighted)
         userNameTextField.setHintText(NSLocalizedString("userName", comment: ""))
         passwordTextField.isSecureTextEntry = true
@@ -72,7 +72,7 @@ class LoginView: UIView {
     }
     
     //MARK: - login Button
-    @objc func didPressLoginButton(_sender: UIButton!) {
+    @objc func didPressLoginButton(_ sender: UIButton!) {
         delegate?.loginViewUserPressedLoginButton(withUserName: userNameTextField.getText(), andWithPassword: passwordTextField.getText())
     }
     

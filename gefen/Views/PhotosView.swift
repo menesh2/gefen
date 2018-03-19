@@ -14,11 +14,16 @@ protocol PhotosViewDataSource: class {
     func PhotosViewGetImageDataForIndexPath(indexPath:IndexPath) ->ImageData
 }
 
+protocol PhotosViewDelegate: class {
+    func photosViewUserSelectedImageAtIndexPath(_ indexPath:IndexPath, FromSelectedCell selectedCell:CustomCollectionViewCell)
+}
+
 class PhotosView: UIView {
 
     //MARK: - variables
     let collectionView:UICollectionView
     weak var dataSource: PhotosViewDataSource?
+    weak var delegate: PhotosViewDelegate?
     let cellId = "customCell"
     
     //MARK: - initializations
@@ -88,5 +93,8 @@ extension PhotosView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 2.0
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.photosViewUserSelectedImageAtIndexPath(indexPath, FromSelectedCell: collectionView.cellForItem(at: indexPath) as! CustomCollectionViewCell)
     }
 }

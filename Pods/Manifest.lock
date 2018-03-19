@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.7.0)
   - Cartography (3.0.1)
+  - ImageOpenTransition (0.1.7)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - Cartography (~> 3.0)
+  - ImageOpenTransition
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Cartography: f8c899bb0f5cf20758644a8eea59a75e98a03a5d
+  ImageOpenTransition: 6a199dddd869cbfe12a853f52802e14d7f874c50
 
-PODFILE CHECKSUM: 2bcc3ab025ef39713ed1ce7f0e9b27768bf260f2
+PODFILE CHECKSUM: fcfeac83fa49bbb88769eba870d94af0f732be49
 
 COCOAPODS: 1.4.0
