@@ -30,7 +30,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func setImageData(imageData:ImageData?) {
         self.imageData = imageData
-        getImageFromServer()
+        if(imageData?.image == nil) {
+             getImageFromServer()
+        }
+        else {
+            self.imageView.image = imageData?.image
+        }
+       
     }
     
     func getImageFromServer() {
@@ -45,10 +51,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     func imageArrived(imageData:ImageData) {
-        if imageData.imageId == self.imageData?.imageId {
-            DispatchQueue.main.async {
-                self.imageView.image = imageData.image
-            }
+        
+        DispatchQueue.main.async {
+            self.imageView.image = imageData.image
         }
+        
     }
 }
