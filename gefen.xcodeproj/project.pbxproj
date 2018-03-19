@@ -107,10 +107,10 @@
 				7C1D31F0205B14B2009C3201 /* AppDelegate.swift */,
 				7C1D31F2205B14B2009C3201 /* MainViewController.swift */,
 				7C253007205D0D3900C98667 /* PhotosViewController.swift */,
+				7C167B882060522400ECD2F9 /* FullImageViewController.swift */,
 				7C1D31F7205B14B2009C3201 /* Assets.xcassets */,
 				7C1D31FC205B14B2009C3201 /* Info.plist */,
 				7CA15CE7205BD16C0041E8AE /* Localizable.strings */,
-				7C167B882060522400ECD2F9 /* FullImageViewController.swift */,
 			);
 			path = gefen;
 			sourceTree = "<group>";
