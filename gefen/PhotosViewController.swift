@@ -15,7 +15,6 @@ class PhotosViewController: UIViewController {
     let photosView:PhotosView
     let photosLogic:PhotosLogic
     var imageScalePresentTransition:ImageScaleTransitionDelegate?
-    var vc = FullImageViewController()
     
     init() {
         photosView = PhotosView()
@@ -52,9 +51,9 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: PhotosLogicDelegate {
     func photosLogicOpenImageWithTransition(imageData: ImageData, fromCell selectedCell: CustomCollectionViewCell) {
         
-        vc.image = imageData.image
-        vc.loadView()
-        
+        let vc = FullImageViewController()
+        vc.coverImageView.image = imageData.image
+        vc.avatarView.image = imageData.image
         let transitionObjectAvatar = ImageScaleTransitionObject(viewToAnimateFrom: selectedCell.imageView,
                                                                 viewToAnimateTo: vc.avatarView,
                                                                 duration: 10)
