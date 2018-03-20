@@ -14,7 +14,7 @@ protocol FlickerManagerDelegate: class {
 }
 
 class FlickerManager{
-    static let ImagesUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d86308194ea517acd62ad69af14025ac&page=1&format=json&nojsoncallback=1&auth_token=72157664842358407-6b16bbea87dc3710&api_sig=523113ee5635726911c6d62a7cbd42c0"
+    static let ImagesUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=044be8027d0bd24f8deaa2ac5923b48c&page=1&format=json&nojsoncallback=1&auth_token=72157694688577635-2ef7b0ad0763e5a8&api_sig=84534f491ce77d8007dabb9942980d61"
     
     static func sendPhotosRequest(completionHandler:@escaping ([ImageData])->()) {
         

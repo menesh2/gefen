@@ -14,6 +14,8 @@ class PhotosViewController: UIViewController {
     
     let photosView:PhotosView
     let photosLogic:PhotosLogic
+    var imageScalePresentTransition:ImageScaleTransitionDelegate?
+    var vc = FullImageViewController()
     
     init() {
         photosView = PhotosView()
@@ -50,26 +52,24 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: PhotosLogicDelegate {
     func photosLogicOpenImageWithTransition(imageData: ImageData, fromCell selectedCell: CustomCollectionViewCell) {
         
-        let vc = FullImageViewController()
-        vc.coverImageView.image = imageData.image
-        vc.avatarView.image = imageData.image
+        vc.image = imageData.image
+        vc.loadView()
         
         let transitionObjectAvatar = ImageScaleTransitionObject(viewToAnimateFrom: selectedCell.imageView,
                                                                 viewToAnimateTo: vc.avatarView,
-                                                                duration: 0.4)
+                                                                duration: 10)
         
         let transitionObjectCover = ImageScaleTransitionObject(viewToAnimateFrom: selectedCell.imageView,
                                                                viewToAnimateTo: vc.coverImageView,
-                                                               duration: 0.4,
-                                                               frameToAnimateTo: vc.coverImageView.frame)
+                                                               duration: 10)
    
         
-        let imageScalePresentTransition = ImageScaleTransitionDelegate(transitionObjects: [transitionObjectCover ,transitionObjectAvatar],
+        imageScalePresentTransition = ImageScaleTransitionDelegate(transitionObjects: [transitionObjectCover, transitionObjectAvatar],
                                                                         usingNavigationController: false,
-                                                                        duration: 0.4)
+                                                                        duration: 10)
         vc.transitioningDelegate = imageScalePresentTransition;
         vc.modalPresentationStyle = UIModalPresentationStyle.custom;
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
     
     func photosLogicImagesDataArrived() {

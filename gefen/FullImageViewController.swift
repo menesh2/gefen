@@ -11,65 +11,34 @@ import Cartography
 
 class FullImageViewController: UIViewController {
 
-    let coverImageView:UIImageView
-    let avatarView:UIImageView
-    let backButton: UIButton
+    var coverImageView:UIImageView!
+    var avatarView:UIImageView!
+    var image:UIImage!
     
-    init() {
-        coverImageView = UIImageView()
-        avatarView = UIImageView()
-        backButton = UIButton()
-        super.init(nibName: nil, bundle: nil)
-        view.addSubview(coverImageView)
-        view.addSubview(avatarView)
-        view.addSubview(backButton)
-        setupConstraints()
-        initViews()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.backgroundColor = UIColor.white
-    }
     
-    func initViews() {
-        backButton.setTitle("<", for: .normal)
-        backButton.backgroundColor = UIColor.blue
-        backButton.layer.cornerRadius = 10
-        backButton.isUserInteractionEnabled = true
-        backButton.addTarget(self, action: #selector(didPressBackButton(_:)), for: .touchUpInside)
-        backButton.setTitleColor(UIColor.gray, for: .highlighted)
-    }
-    
-    func setupConstraints() {
+    override func loadView() {
+        super.loadView()
         
-        constrain(coverImageView, avatarView, backButton, view){coverImageView, avatarView, backButton, superView in
-            coverImageView.width == superView.width
-            coverImageView.top == superView.top
-            coverImageView.bottom == superView.centerY
-
-            avatarView.width == 160
-            avatarView.height == 160
-            avatarView.centerX == coverImageView.centerX
-            avatarView.centerY == coverImageView.bottom
-            
-            backButton.top == superView.bottom
-            backButton.centerX == superView.centerX
-        }
+        let avatarImageSize : CGFloat = 60
+        let avatarYPoint : CGFloat = 160
+        let frameToAnimateToAvatar = CGRect(x:(self.view.frame.size.width/2) - (avatarImageSize/2),y: avatarYPoint,width: avatarImageSize,height: avatarImageSize)
+        let frameToAnimateToCover = CGRect(x: 0,y:  0,width:  self.view.frame.size.width , height:  200)
         
+        self.coverImageView = UIImageView()
+        self.coverImageView.image = image
+        self.coverImageView.contentMode = UIViewContentMode.scaleAspectFill
+        self.coverImageView.clipsToBounds = true
+        self.coverImageView.frame = frameToAnimateToCover
+        self.view.addSubview(self.coverImageView)
+        
+        self.avatarView = UIImageView()
+        self.avatarView.image = image
+        self.avatarView.frame = frameToAnimateToAvatar
+        self.avatarView.contentMode = UIViewContentMode.scaleAspectFill
+        self.avatarView.clipsToBounds = true
+        self.view.addSubview(self.avatarView)
+        
+        self.view.backgroundColor = UIColor.white
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func didPressBackButton(_ sender:UIButton!) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.7) {
-            constrain(self.backButton, self.view){btn, superView in
-                btn.top == superView.centerY + 150
-            }
-            self.view.layoutIfNeeded()
-        }
-    }
 }
