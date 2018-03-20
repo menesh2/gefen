@@ -73,10 +73,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     func imageArrived(imageData:ImageData) {
-        
-        DispatchQueue.main.async {
-            self.imageView.image = imageData.image
-            self.hideLoadingAnimation()
+        if self.imageData?.imageId == imageData.imageId {
+            DispatchQueue.main.async {
+                self.imageView.image = imageData.image
+                self.hideLoadingAnimation()
+            }
+            
         }
         
     }
